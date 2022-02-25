@@ -23,7 +23,7 @@ class SenderReceiverSerializer(serializers.ModelSerializer):
         return instance.pk == self.user.pk
 
     def get_display_name(self, instance):
-        return f"{instance.first_name} {instance.last_name}"
+        return f"{full_name}"
 
 
 class InboxSerializer(serializers.ModelSerializer):
