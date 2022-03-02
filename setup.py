@@ -15,7 +15,7 @@ setup(
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     version=__version__,
-    url="https://github.com/tiagoarasilva/django-messages-drf",
+    url="https://github.com/cloudlessdreams/myDjangoMessagesDRF.git",
     license="MIT",
     packages=find_packages(),
     package_data={
