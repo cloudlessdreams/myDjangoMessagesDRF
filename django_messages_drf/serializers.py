@@ -11,6 +11,7 @@ class SenderReceiverSerializer(serializers.ModelSerializer):
     display_name = serializers.SerializerMethodField()
     is_user = serializers.SerializerMethodField()
     profile_image = serializers.SerializerMethodField()
+    user_id = serializers.SerializerMethodField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,13 +19,16 @@ class SenderReceiverSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('display_name', 'is_user', 'profile_image')
+        fields = ('display_name', 'is_user', 'profile_image', 'user_id')
 
     def get_is_user(self, instance):
         return instance.pk == self.user.pk
 
     def get_display_name(self, instance):
         return f"{instance.full_name}"
+
+    def get_user_id(self, instance):
+        return f"{instance.id}"
 
     def get_profile_image(self, instance):
         try:
