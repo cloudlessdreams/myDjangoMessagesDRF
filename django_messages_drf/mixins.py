@@ -46,6 +46,20 @@ class ThreadMixin: # pragma: no cover
         except get_user_model().DoesNotExist:
             return
 
+    def get_users(self):
+        """Get a list of Users to whom which the message will be sent"""
+        users = self.kwargs.get('user_id').split(', ')
+        user_objects = []
+        for user in users:
+            user = get_user_model().objects.get(pk=user)
+            user_objects.append(user)
+        try:
+            return user_objects
+        # try:
+        #     return get_user_model().objects.get(pk=self.kwargs.get('user_id'))
+        except get_user_model().DoesNotExist:
+            return
+
     def get_thead_by_id(self):
         """Gets a thread by id"""
         try:
